@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>AI Outfit Stylist</title>
+
+<link rel="stylesheet" href="style.css">
+
+<!-- TensorFlow -->
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0"></script>
+
+<!-- MediaPipe -->
+
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14"></script>
+
+<!-- Download -->
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+<header>
+
+<h1>
+
+👗 AI Outfit Stylist
+
+</h1>
+
+<p>
+
+Upload your image and get AI powered outfit recommendations.
+
+</p>
+
+</header>
+
+<section class="uploadSection">
+
+<label class="uploadBox">
+
+<input
+
+type="file"
+
+id="photo"
+
+accept="image/*">
+
+<div>
+
+📸 Upload Image
+
+</div>
+
+</label>
+
+<img
+
+id="preview">
+
+<div class="cameraButtons">
+
+<button onclick="openCamera()">
+
+📷 Open Camera
+
+</button>
+
+<button
+
+id="captureBtn"
+
+onclick="capture()">
+
+📸 Capture
+
+</button>
+
+</div>
+
+<video
+
+id="camera"
+
+autoplay
+
+playsinline>
+
+</video>
+
+<canvas id="canvas">
+
+</canvas>
+
+</section>
+
+<section class="controls">
+
+<select id="occasion">
+
+<option>College</option>
+
+<option>Office</option>
+
+<option>Interview</option>
+
+<option>Wedding</option>
+
+<option>Party</option>
+
+<option>Date</option>
+
+<option>Festival</option>
+
+<option>Casual</option>
+
+<option>Travel</option>
+
+<option>Gym</option>
+
+</select>
+
+<select id="season">
+
+<option>Summer</option>
+
+<option>Winter</option>
+
+<option>Rainy</option>
+
+<option>Spring</option>
+
+<option>Autumn</option>
+
+</select>
+
+<button onclick="recommend()">
+
+✨ Generate Outfit
+
+</button>
+
+</section>
+
+<section
+
+class="card"
+
+id="card">
+
+<h2>
+
+🤖 AI Analysis
+
+</h2>
+<div class="result" id="faceDetected">
+Face Detection : -
+</div>
+
+<div class="result" id="faceShape">
+Face Shape : -
+</div>
+
+<div class="result" id="skinTone">
+Skin Tone : -
+</div>
+
+<div class="result" id="dominantColor">
+Dominant Color : -
+</div>
+
+<div class="result" id="emotion">
+Expression : -
+</div>
+
+<div class="result" id="confidence">
+Confidence : -
+</div>
+
+<hr>
+
+<h2>
+🎨 Color Palette
+</h2>
+
+<div id="palette">
+
+<div class="colorBox"></div>
+<div class="colorBox"></div>
+<div class="colorBox"></div>
+<div class="colorBox"></div>
+<div class="colorBox"></div>
+
+</div>
+
+<hr>
+
+<h2>
+👗 AI Outfit Recommendation
+</h2>
+
+<div class="result" id="dress">
+Outfit : -
+</div>
+
+<div class="result" id="color">
+Color : -
+</div>
+
+<div class="result" id="shoe">
+Shoes : -
+</div>
+
+<div class="result" id="watch">
+Watch : -
+</div>
+
+<div class="result" id="bag">
+Bag : -
+</div>
+
+<div class="result" id="hair">
+Hairstyle : -
+</div>
+
+<div class="result" id="score">
+Outfit Score : -
+</div>
+
+<div class="result" id="trend">
+Trend : -
+</div>
+
+</section>
+
+<section class="buttons">
+
+<button onclick="downloadCard()">
+⬇ Download Card
+</button>
+
+<button onclick="toggleTheme()">
+🌙 Theme
+</button>
+
+<button onclick="startVoice()">
+🎤 Voice Assistant
+</button>
+
+<button onclick="saveFavourite()">
+❤️ Save Favourite
+</button>
+
+<button onclick="showHistory()">
+📜 History
+</button>
+
+<button onclick="resetApp()">
+🔄 Reset
+</button>
+
+</section>
+
+<footer>
+
+<p>
+Made with ❤️ by Siddhi Hiran
+</p>
+
+<p>
+AI Outfit Stylist • Version 2.0
+</p>
+
+</footer>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
